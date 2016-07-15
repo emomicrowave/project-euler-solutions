@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define LIMIT 40587	// how many numbers to iterate through
+#define LIMIT 150000	// how many numbers to iterate through
 #define LIMIT_SIZE 8	// how many digits does the max number have
 #define ENABLE_DEBUG 0	// set to 1 to display information for every number
 
@@ -26,8 +26,8 @@ int main(){
         if(ENABLE_DEBUG){printf("------\nLooping number: %d --||--", i);}
 		
         if (i == digits_factorial(digits(i), len_number(i))){
-                printf("%d is equal the sum of the factorial of its digits! \n", i);
-				endsum += i;
+            printf("%d is equal the sum of the factorial of its digits! \n", i);
+            endsum += i;
         }
     }
 
@@ -63,13 +63,13 @@ int* digits(int n){
 
     // get the single digits
     while (n > 0){
-		digit = n % 10;
-		digits[counter] = digit;
+        digit = n % 10;
+        digits[counter] = digit;
 
-		if(ENABLE_DEBUG){printf("%d=%d, ", counter, digit);}
+        if(ENABLE_DEBUG){printf("%d=%d, ", counter, digit);}
 
-		counter ++;
-		n = div(n,10).quot;
+        counter ++;
+        n = div(n,10).quot;
 	}
 
     return digits;
