@@ -7,8 +7,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 
-#define LIMIT 150000	// how many numbers to iterate through
+#define LIMIT 1500000	// how many numbers to iterate through
 #define LIMIT_SIZE 8	// how many digits does the max number have
 #define ENABLE_DEBUG 0	// set to 1 to display information for every number
 
@@ -18,9 +19,12 @@ int arraylen(int *arr);
 int digits_factorial(int *arr, int number_len);
 int len_number(int n);
 
+
+
 int main(){
     printf("Program start\n");
 	int endsum = 0;
+    clock_t begin = clock();
 
     for (int i = 1; i < LIMIT; i++){
         if(ENABLE_DEBUG){printf("------\nLooping number: %d --||--", i);}
@@ -32,6 +36,11 @@ int main(){
     }
 
 	printf("\n---------\n End sum: %d \n ---------\n", endsum);
+
+    clock_t end = clock();
+    double time_spent = (double)(end-begin)/CLOCKS_PER_SEC;
+    printf("Time spent: %f ms\n", time_spent);
+
     return EXIT_SUCCESS;}
 
 // fak(n) = n! = n*n-1*n-2* ... * 2*1
@@ -99,8 +108,8 @@ int len_number(int n){
 		proof = (int) pow(10, (double) i);
 
 		if (n % proof != n){
-			if (ENABLE_DEBUG){printf("Number length: %d, proof: %d;", i, proof);}
-			return i+1;
+		    if (ENABLE_DEBUG){printf("Number length: %d, proof: %d;", i, proof);}
+            return i+1;
 		}		
 
 	}
